@@ -17,15 +17,13 @@ cask "freedisplay" do
   app "FreeDisplay.app"
 
   caveats <<~EOS
-    FreeDisplay is ad-hoc signed and not notarized. If macOS refuses to open it
-    ("cannot be opened because the developer cannot be verified"), remove the
-    quarantine attribute once:
+    FreeDisplay is ad-hoc signed and not notarized, so macOS will refuse to open
+    it ("cannot be opened because the developer cannot be verified") until the
+    quarantine attribute is removed once:
 
-      xattr -dr com.apple.quarantine "#{appdir}/FreeDisplay.app"
+      xattr -d com.apple.quarantine "#{appdir}/FreeDisplay.app"
 
-    or install without quarantine in the first place:
-
-      brew install --no-quarantine ludos1978/freedisplay/freedisplay
+    Repeat this after every upgrade.
   EOS
 
   zap trash: [

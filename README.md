@@ -7,25 +7,22 @@ virtual displays, presets).
 ## Install
 
 ```bash
+brew trust ludos1978/freedisplay          # Homebrew ≥ 6 requires trusting third-party taps
 brew tap ludos1978/freedisplay
-brew install --cask --no-quarantine freedisplay
+brew install --cask freedisplay
+xattr -d com.apple.quarantine /Applications/FreeDisplay.app
 ```
 
-`--no-quarantine` matters: FreeDisplay is ad-hoc signed and not notarized, so
-without it macOS shows "cannot be opened because the developer cannot be
-verified" on first launch.
-
-If you already installed it (or downloaded the app by hand) and macOS refuses
-to open it, remove the quarantine attribute once:
-
-```bash
-xattr -dr com.apple.quarantine /Applications/FreeDisplay.app
-```
+The last line is required: FreeDisplay is ad-hoc signed and **not notarized**, so
+macOS refuses to open it ("cannot be opened because the developer cannot be
+verified") until the quarantine attribute is removed. (Alternative: right-click
+the app → **Open** and confirm the dialog once.)
 
 ## Update
 
 ```bash
 brew upgrade --cask freedisplay
+xattr -d com.apple.quarantine /Applications/FreeDisplay.app
 ```
 
 ## Uninstall
@@ -37,4 +34,4 @@ brew uninstall --cask --zap freedisplay  # also removes settings and presets
 
 ## Requirements
 
-macOS 14 (Sonoma) or newer, Apple Silicon or Intel.
+macOS 14 (Sonoma) or newer, Apple Silicon or Intel. Homebrew 6 or newer.
