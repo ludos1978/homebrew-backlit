@@ -1,6 +1,6 @@
 cask "backlit" do
-  version "0.5.0"
-  sha256 "683051525f04c9b4c67aec47af9ec398e7180f2cffdca7623d743c46d76853e1"
+  version "0.5.1"
+  sha256 "72c3515a789580548a5ab94541bd6ce391f1e1cdc263c71c9d76638dd222dc99"
 
   url "https://github.com/ludos1978/Backlit/releases/download/v#{version}/Backlit-#{version}.zip"
   name "Backlit"
